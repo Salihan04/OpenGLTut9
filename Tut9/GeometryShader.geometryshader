@@ -1,10 +1,37 @@
 #version 330 core
 
 layout(points) in;
-    layout(points, max_vertices = 1) out;
+//layout(points, max_vertices = 1) out;				//to draw points
+layout(line_strip, max_vertices = 2) out;			//to draw lines
+//layout(triangle_strip, max_vertices = 5) out;		//to draw rectangles
 
-    void main() {
-        gl_Position = gl_in[0].gl_Position;
-        EmitVertex();
-        EndPrimitive();
-    }
+void main() {
+	/////TO DRAW POINTS/////
+	//gl_Position = gl_in[0].gl_Position;
+	//EmitVertex();
+	
+	/////TO DRAW LINES/////
+	gl_Position = gl_in[0].gl_Position + vec4(-0.1, 0.0, 0.0, 0.0);
+    EmitVertex();
+
+    gl_Position = gl_in[0].gl_Position + vec4(0.1, 0.0, 0.0, 0.0);
+    EmitVertex();
+
+	/////TO DRAW RECTANGLES/////
+	//gl_Position = gl_in[0].gl_Position + vec4(-0.1, 0.1, 0.0, 0.0);
+	//EmitVertex();
+
+	//gl_Position = gl_in[0].gl_Position + vec4(0.1, 0.1, 0.0, 0.0);
+	//EmitVertex();
+
+	//gl_Position = gl_in[0].gl_Position + vec4(0.1, -0.1, 0.0, 0.0);
+	//EmitVertex();
+
+	//gl_Position = gl_in[0].gl_Position + vec4(-0.1, -0.1, 0.0, 0.0);
+	//EmitVertex();
+
+	//gl_Position = gl_in[0].gl_Position + vec4(-0.1, 0.1, 0.0, 0.0);
+	//EmitVertex();
+
+	EndPrimitive();
+}
