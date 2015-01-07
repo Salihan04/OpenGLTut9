@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	//need to be after glewInit(), otherwise got error
-	programID = LoadShaders("VertexShader.vertexshader", "FragmentShader.fragmentshader");
+	programID = LoadShaders("VertexShader.vertexshader", "FragmentShader.fragmentshader", "GeometryShader.geometryshader");
 
 	createPointsBuffer();
 
