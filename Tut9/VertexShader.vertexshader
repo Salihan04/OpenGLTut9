@@ -3,10 +3,14 @@
 // Input vertex data, different for all executions of this shader.
 layout(location = 0) in vec2 pos;
 
-//out vec4 vertexColor;
+layout(location = 1) in vec4 color;
+
+out vec4 vertexColor;
 
 void main() {
     gl_Position.xy = pos;
 	gl_Position.z = 0.0;
 	gl_Position.w = 1.0;
+	
+	vertexColor = color;
 }

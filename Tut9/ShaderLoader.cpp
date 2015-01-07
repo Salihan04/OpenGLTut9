@@ -171,8 +171,8 @@ GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_pat
 	fprintf(stdout, "Linking program\n");
 	GLuint ProgramID = glCreateProgram();
 	glAttachShader(ProgramID, VertexShaderID);
-	glAttachShader(ProgramID, FragmentShaderID);
 	glAttachShader(ProgramID, GeometryShaderID);
+	glAttachShader(ProgramID, FragmentShaderID);
 	glLinkProgram(ProgramID);
 
 	// Check the program
@@ -183,8 +183,8 @@ GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_pat
 	fprintf(stdout, "%s\n", &ProgramErrorMessage[0]);
 
 	glDeleteShader(VertexShaderID);
-	glDeleteShader(FragmentShaderID);
 	glDeleteShader(GeometryShaderID);
+	glDeleteShader(FragmentShaderID);
 
 	return ProgramID;
 }
