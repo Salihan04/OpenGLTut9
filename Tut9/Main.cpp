@@ -67,10 +67,11 @@ int main(int argc, char **argv) {
 
 void createPointsBuffer() {
 	GLfloat points[] = {
-		-0.45f, 0.45f, 1.0f, 0.0f, 0.0f, 1.0f,		// Red point
-		0.45f, 0.45f, 0.0f, 1.0f, 0.0f, 1.0f,		// Green point
-		0.45f, -0.45f, 0.0f, 0.0f, 1.0f, 1.0f,		// Blue point
-		-0.45f, -0.45f, 1.0f, 1.0f, 0.0f, 1.0f		// Yellow point
+		//Coord				   //Colour			  //Sides
+		-0.45f, 0.45f, 1.0f,   0.0f, 0.0f, 1.0f,   4.0f,
+		0.45f, 0.45f, 0.0f,    1.0f, 0.0f, 1.0f,   8.0f,
+		0.45f, -0.45f, 0.0f,   0.0f, 1.0f, 1.0f,   16.0f,
+		-0.45f, -0.45f, 1.0f,  1.0f, 0.0f, 1.0f,   32.0f
 	};
 
 	glGenBuffers(1, &pointsBuffer);
@@ -88,12 +89,17 @@ void renderScene() {
 	// Specify layout of point data
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), 0);
 
 	glEnableVertexAttribArray(1);
 	glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
-		6 * sizeof(float), (void*)(2 * sizeof(float)));
+		7 * sizeof(float), (void*)(2 * sizeof(float)));
+
+	glEnableVertexAttribArray(2);
+	glBindBuffer(GL_ARRAY_BUFFER, pointsBuffer);
+	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE,
+		7 * sizeof(float), (void*)(6 * sizeof(float)));
 
 	glDrawArrays(GL_POINTS, 0, 4);
 
